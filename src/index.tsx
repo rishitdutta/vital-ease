@@ -14,6 +14,8 @@ import calendar from "/calendar.png"
 import call from "/call.png"
 import chat from "/chat.png"
 import records from "/records.png"
+import contact from "/call.svg"
+import user from "/user.svg"
 
 import "tailwindcss/tailwind.css";
 
@@ -25,6 +27,15 @@ function Appointment({ doctor }: { doctor: string }) {
         <h4>Dr {doctor}</h4>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquet ante non dolor</p>
       </div>
+    </div>
+  )
+}
+
+function Contact({ content }: { content: string}) {
+  return (
+    <div class="flex gap-2">
+      <img src={contact} class="h-12" />
+      <h1 class="bg-gray-200 rounded-md text-xl grow p-2">{content}</h1>
     </div>
   )
 }
@@ -41,9 +52,8 @@ function Dashboard({ name }: { name: string }) {
 
   function DashboardHead() {
     return (
-      <div class="basis-3/12 bg-zinc-200 text-white flex flex-col gap-2 items-stretch overflow-hidden">
-        <div class="w-1/3 aspect-square bg-white rounded-full p-4">
-        </div>
+      <div class="p-2 basis-3/12 bg-zinc-200 text-white flex flex-col gap-2 items-stretch overflow-hidden justify-around">
+        <img src={user} class="w-1/2 self-center" />
         <button onClick={() => setState(State.Calendar)} class="bg-emerald-500 p-4 m-2 rounded-md">Calendar</button>
         <button onClick={() => setState(State.MyReport)} class="bg-emerald-500 p-4 m-2 rounded-md">My Report</button>
         <button onClick={() => setState(State.EContacts)} class="bg-emerald-500 p-4 m-2 rounded-md">E-Contacts</button>
@@ -57,7 +67,7 @@ function Dashboard({ name }: { name: string }) {
       <div class="flex h-screen">
         <DashboardHead />
         <div class="basis-9/12">
-          <h1 class="bg-green-500 text-white">{name}</h1>
+          <h1 class="bg-green-500 text-white p-2 font-bold text-2xl">{name}</h1>
           <span class="px-2 bg-green-300">Appointments</span>
           <Appointment doctor="XYZ" />
           <Appointment doctor="ABC" />
@@ -68,8 +78,11 @@ function Dashboard({ name }: { name: string }) {
     return (
       <div class="flex h-screen">
         <DashboardHead />
-        <div class="basis-9/12">
-          <h1 class="bg-green-300 text-white">{name}</h1>
+        <div class="basis-9/12 flex flex-col gap-2">
+          <h1 class="bg-green-500 text-white p-2 font-bold text-2xl">{name}</h1>
+          <div class="m-2">
+            <span class="bg-gray-200 px-4 py-2 font-bold text-xl rounded-lg">My Report</span>
+          </div>
         </div>
       </div>
     )
@@ -77,8 +90,18 @@ function Dashboard({ name }: { name: string }) {
     return (
       <div class="flex h-screen">
         <DashboardHead />
-        <div class="basis-9/12">
-          <h1 class="bg-green-300 text-white">{name}</h1>
+        <div class="basis-9/12 flex flex-col gap-2">
+          <h1 class="bg-green-500 text-white p-2 font-bold text-2xl">{name}</h1>
+          <div class="px-2 flex justify-between m-2">
+            <h1 class="text-4xl">Your emergency contacts</h1>
+            <button class="bg-gray-200 p-2 rounded-md">+ Add more</button>
+          </div>
+          <div class="flex flex-col gap-4">
+            <Contact content="Ambulance" />
+            <Contact content="VitalEase" />
+            <Contact content="Doctor" />
+            <Contact content="Nurse" />
+          </div>
         </div>
       </div>
     )
@@ -88,7 +111,7 @@ function Dashboard({ name }: { name: string }) {
     <div class="flex h-screen">
       <DashboardHead />
       <div class="basis-9/12">
-        <h1 class="bg-green-300 text-white">{name}</h1>
+          <h1 class="bg-green-500 text-white p-2 font-bold text-2xl">{name}</h1>
       </div>
     </div>
   )
@@ -106,7 +129,7 @@ function Register() {
   };
   if (state == State.Form) {
     return (
-      <form class="flex grow mx-auto my-8 rounded-md justify-center bg-gray-200 p-2 flex-col items-start" onSubmit={handleRegister}>
+      <form class="flex grow rounded-md justify-center mx-auto my-8 items-start bg-gray-200 p-2 flex-col" onSubmit={handleRegister}>
         <label>
           Name:
           <input required name="name" class="border border-pink-800 rounded-lg p-1 ml-1" />
@@ -125,7 +148,9 @@ function Register() {
   }
   /* state is State.Success */
   return (
-    <p>Registration Successful</p>
+    <form class="flex grow mx-auto my-8 rounded-md justify-center bg-gray-200 p-2 flex-col items-start">
+      <p class="text-green-950">Registration Successful</p>
+    </form>
   )
 }
 
@@ -184,24 +209,36 @@ function App() {
             </div>
           </main>
         </div>
-        <div class="h-screen flex bg-green-200">
+        <div class="h-screen flex flex-col md:flex-row bg-green-100">
           <img src={calendar} class="max-h-screen" />
-          <p>You can add appointments</p>
+          <div>
+            <h1 class="bg-green-700 text-4xl text-white font-serif font-bold p-2">CALENDAR</h1>
+            <p class="bg-green-200 text-3xl py-4 px-12">Effortlessly manage your medication routine with daily, weekly, and monthly views. Drag-and-drop functionality ensures scheduling adjustments are a breeze</p>
+          </div>
         </div>
         <div class="h-screen flex bg-green-400">
-          <p>You can make calls?</p>
+          <div>
+            <h1 class="bg-green-700 text-4xl text-white font-serif font-bold p-2">EMERGENCY CONTACTS</h1>
+            <p class="bg-green-200 text-3xl py-4 px-12">Prioritize safety with an easily accessible emergency section. Reach out to designated contacts swiftly through in-app alerts and automated SMS notifications in critical situations.</p>
+          </div>
           <img src={call} class="max-h-screen" />
         </div>
         <div class="h-screen flex bg-green-200">
           <img src={chat} class="max-h-screen" />
-          <p>You can chat?</p>
+          <div>
+            <h1 class="bg-green-700 text-4xl text-white font-serif font-bold p-2">MEDICAL RECORDS</h1>
+            <p class="bg-green-200 text-3xl py-4 px-12">Upload your medical records, set goals and visualize the progress you make. Share your records and get feedback and recommendations from doctors and experts.</p>
+          </div>
         </div>
         <div class="h-screen flex bg-green-400">
-          <p>You can do records?</p>
+          <div>
+            <h1 class="bg-green-700 text-4xl text-white font-serif font-bold p-2">AI CHATBOT</h1>
+            <p class="bg-green-200 text-3xl py-4 px-12">Get instant answers to medication FAQs, dietary queries, and user assistance. Our friendly chatbot, powered by OpenAI, ensures a coversational interface for step-by-step guidance and troubleshooting.</p>
+          </div>
           <img src={records} class="max-h-screen" />
         </div>
-        <div class="h-screen bg-green-200">
-          <h1 class="text-xl">JOIN NOW</h1>
+        <div class="h-screen bg-green-200 flex justify-center items-center">
+          <button onClick={handleLoginPage} class="text-xl font-serif font-black bg-green-600 rounded-md p-2">JOIN NOW</button>
         </div>
       </>
     )
