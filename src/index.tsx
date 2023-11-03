@@ -19,7 +19,7 @@ import "tailwindcss/tailwind.css";
 
 function Appointment({ doctor }: { doctor: string }) {
   return (
-    <div>
+    <div class="m-2 p-1 rounded-md bg-gray-200">
       <h3>DD/MM/YY</h3>
       <div>
         <h4>Dr {doctor}</h4>
@@ -184,19 +184,19 @@ function App() {
             </div>
           </main>
         </div>
-        <div class="h-screen flex">
+        <div class="h-screen flex bg-green-200">
           <img src={calendar} class="max-h-screen" />
           <p>You can add appointments</p>
         </div>
-        <div class="h-screen flex">
+        <div class="h-screen flex bg-green-400">
           <p>You can make calls?</p>
           <img src={call} class="max-h-screen" />
         </div>
-        <div class="h-screen flex">
+        <div class="h-screen flex bg-green-200">
           <img src={chat} class="max-h-screen" />
           <p>You can chat?</p>
         </div>
-        <div class="h-screen flex">
+        <div class="h-screen flex bg-green-400">
           <p>You can do records?</p>
           <img src={records} class="max-h-screen" />
         </div>
