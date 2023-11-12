@@ -8,6 +8,7 @@
 
 import { render, JSX } from "preact"
 import { useState, StateUpdater } from "preact/hooks"
+import "./index.css"
 import vitalease from "/vitalease.svg"
 import chatbot from "/chat.svg"
 import calendar from "/calendar.png"
@@ -143,7 +144,7 @@ function Register({ setState }: { setState: StateUpdater<State> }) {
           <div class="bg-green-800">
             <h1 class="text-white text-center text-3xl py-2">Register</h1>
           </div>
-          <form class="flex flex-col justify-start gap-4 px-8 py-4 bg-green-400 text-xl" onSubmit={handleRegister}>
+          <form class="flex flex-col justify-start gap-4 px-8 py-4 glass text-xl" onSubmit={handleRegister}>
             <div class="flex flex-col gap-1">
               <label for="name">Name</label>
               <Input id="name" />
@@ -187,7 +188,7 @@ function Login({ handleLogin }: { handleLogin: JSX.GenericEventHandler<HTMLFormE
           <div class="bg-green-800">
             <h1 class="text-white text-center text-3xl py-2">Login</h1>
           </div>
-          <form class="flex flex-col justify-start gap-4 px-8 py-4 bg-green-400 text-xl" onSubmit={handleLogin}>
+          <form class="flex flex-col justify-start gap-4 px-8 py-4 glass text-xl" onSubmit={handleLogin}>
             <div class="flex flex-col gap-1">
               <label for="name">Name</label>
               <Input id="name" />
@@ -237,7 +238,7 @@ function App() {
         <div class="min-h-screen bg-hero-pattern flex flex-col">
           <Header setState={setState} />
           <main class="flex grow justify-end items-center">
-            <div class="flex flex-col items-center gap-4 max-w-prose bg-slate-300/80 p-12">
+            <div class="flex flex-col items-center gap-4 max-w-prose p-12 glass">
               <div>
                 <img src={vitalease} class="w-80" />
                 <p class="font-serif text-xl">Healthier and more connected future for all</p>
