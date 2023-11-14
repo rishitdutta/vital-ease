@@ -8,9 +8,14 @@ export default {
     extend: {
       backgroundImage: {
         'hero-pattern': "url('/hero-pattern.jpg')",
-      }
+      },
+      colors: {
+        "mygreen": "#2B6731",
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-3d')({ legacy: true }),
+  ],
 }
 /* vim: set et sw=2: */

@@ -3,7 +3,26 @@
 @tailwind utilities;
 
 .glass{
-    background: linear-gradient(145deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.3) 100%);
-    box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.25), inset 4px 4px 20px -1px rgba(255, 255, 255, 0.25);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.3) 100%), url("/noise.png");
+    background-blend-mode: screen;
+    box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.25), inset 4px 4px 10px -1px rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(10px);
+}
+
+.glass-green{
+    background: linear-gradient(145deg, rgb(101, 159, 89, 0.5) 0%, rgba(75, 116, 85, 0.05) 100%), url("/noise.png");
+    background-blend-mode: screen;
+    box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.25), inset 4px 4px 20px -1px rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(4px);
+}
+
+.glass-green-dark{
+    background: linear-gradient(145deg, rgb(32, 80, 37) 0%, rgba(39, 100, 46, 0.8) 100%), url("/noise.png");
+    background-blend-mode: hard-light;
+    box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.25), inset 4px 4px 20px -1px rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(6px);
+}
+.hero-image{
+    background: url("/hero-pattern.jpg") center center no-repeat;
+    background-size: cover;
 }

@@ -18,8 +18,6 @@ import records from "/records.png"
 import contact from "/call.svg"
 import user from "/user.svg"
 
-import "tailwindcss/tailwind.css";
-
 enum State {
   Home,
   Register,
@@ -141,7 +139,7 @@ function Register({ setState }: { setState: StateUpdater<State> }) {
     return (
       <div class="grow flex justify-center items-center">
         <div class="w-full sm:w-7/12 md:w-1/2 lg:w-1/3 xl:1/4 flex flex-col">
-          <div class="bg-green-800">
+          <div class="glass-green-dark">
             <h1 class="text-white text-center text-3xl py-2">Register</h1>
           </div>
           <form class="flex flex-col justify-start gap-4 px-8 py-4 glass text-xl" onSubmit={handleRegister}>
@@ -151,7 +149,7 @@ function Register({ setState }: { setState: StateUpdater<State> }) {
             </div>
             <div class="flex flex-col gap-1">
               <label for="email">Email</label>
-              <Input id="email" type="email" />
+              <Input id="email" type="email"/>
             </div>
             <div class="flex flex-col gap-1">
               <label for="password">Password</label>
@@ -161,7 +159,7 @@ function Register({ setState }: { setState: StateUpdater<State> }) {
               <label for="cnfpassword">Confirm Password</label>
               <Input id="cnfpassword" type="password" />
             </div>
-            <button class="bg-green-800 text-white font-bold px-4 py-1 self-center">Register</button>
+            <button class="glass-green-dark text-white font-bold px-4 py-1 self-center">Register</button>
             <p class="self-center">Already have an account? <button onClick={() => setState(State.Login)} class="underline">Log in</button></p>
           </form>
         </div>
@@ -185,7 +183,7 @@ function Login({ handleLogin }: { handleLogin: JSX.GenericEventHandler<HTMLFormE
     return (
       <div class="grow flex justify-center items-center">
         <div class="w-full sm:w-7/12 md:w-1/2 lg:w-1/3 xl:1/4 flex flex-col">
-          <div class="bg-green-800">
+          <div class="glass-green-dark">
             <h1 class="text-white text-center text-3xl py-2">Login</h1>
           </div>
           <form class="flex flex-col justify-start gap-4 px-8 py-4 glass text-xl" onSubmit={handleLogin}>
@@ -197,7 +195,7 @@ function Login({ handleLogin }: { handleLogin: JSX.GenericEventHandler<HTMLFormE
               <label for="password">Password</label>
               <Input id="password" type="password" />
             </div>
-            <button class="bg-green-800 text-white font-bold px-4 py-1 self-center">Login</button>
+            <button class="glass-green-dark text-white font-bold px-4 py-1 self-center">Login</button>
             <p class="self-center">Forgot password?</p>
           </form>
         </div>
@@ -208,15 +206,15 @@ function Login({ handleLogin }: { handleLogin: JSX.GenericEventHandler<HTMLFormE
 function Header({ setState }: { setState: StateUpdater<State> }) {
   return (
     <>
-      <header class="bg-green-400 flex items-center justify-between px-4 opacity-80 text-xl">
-        <button onClick={() => setState(State.Home)}><img src={vitalease} class="w-40" /></button>
-        <div class="flex gap-4">
-          <button onClick={() => setState(State.Login)} class="px-8 py-2 bg-white rounded-md font-black font-serif">Log in</button>
-          <button onClick={() => setState(State.Register)} class="px-8 py-2 bg-white rounded-md font-black font-serif">Sign up</button>
+      <header class="glass bg-opacity-50 flex items-center justify-between px-4 text-xl">
+        <button onClick={() => setState(State.Home)}><img src={vitalease} class="w-40 drop-shadow-md" /></button>
+        <div class="flex gap-5">
+          <button onClick={() => setState(State.Login)} class="px-8 py-2 glass-green-dark text-white font-black font-serif">Log in</button>
+          <button onClick={() => setState(State.Register)} class="px-8 py-2 glass-green-dark text-white font-black font-serif">Sign up</button>
         </div>
       </header>
       <button>
-        <img src={chatbot} class="bg-green-800 w-20 fixed bottom-0 right-0 m-4 p-4 rounded-full" />
+        <img src={chatbot} class="bg-mygreen w-20 fixed bottom-0 right-0 m-4 p-4 rounded-full z-10" />
       </button>
     </>
   )
@@ -235,55 +233,56 @@ function App() {
   if (state == State.Home) {
     return (
       <>
-        <div class="min-h-screen bg-hero-pattern flex flex-col">
+        <div class="min-h-screen hero-image flex flex-col">
           <Header setState={setState} />
           <main class="flex grow justify-end items-center">
             <div class="flex flex-col items-center gap-4 max-w-prose p-12 glass">
               <div>
-                <img src={vitalease} class="w-80" />
+                <img src={vitalease} class="w-80 translate-x-6" />
                 <p class="font-serif text-xl">Healthier and more connected future for all</p>
               </div>
               <p class="text-2xl font-serif text-center">Revolutionizing health management with intuitive schedules, emergency alerts, seamless communication, and AI-powered assistance.</p>
-              <button class="bg-green-800 text-white text-xl font-bold px-4 py-1" onClick={() => setState(State.Register)}>JOIN NOW</button>
+              <button class="glass-green-dark text-white text-xl font-bold px-4 py-1" onClick={() => setState(State.Register)}>JOIN NOW</button>
             </div>
           </main>
         </div>
-        <div class="min-h-screen flex flex-col items-end bg-green-100">
-          <h1 class="bg-green-700 w-3/4 text-4xl text-white font-serif font-bold p-2">CALENDAR</h1>
+        <div class="min-h-screen flex flex-col items-end py-[16vh] snap-center">
+          <h1 class="glass-green-dark w-3/4 text-3xl text-white font-serif font-bold px-6 py-2">CALENDAR</h1>
           <div class="flex flex-col md:flex-row">
-            <div class="basis-0 grow"><img src={calendar} class="max-h-screen" width="703" height="703" alt="" /></div>
-            <p class="bg-green-200 basis-0 grow text-3xl py-4 px-12">Effortlessly manage your medication routine with daily, weekly, and monthly views. Drag-and-drop functionality ensures scheduling adjustments are a breeze</p>
+            <div class="basis-0 grow m-10"><img src={calendar} class="max-h-screen mx-auto" width="500" height="500" alt="" /></div>
+            <p class="glass-green basis-0 grow text-3xl font-serif py-4 px-12 inline-block align-middle">Effortlessly manage your medication routine with daily, weekly, and monthly views. Drag-and-drop functionality ensures scheduling adjustments are a breeze</p>
           </div>
         </div>
-        <div class="min-h-screen flex flex-col bg-green-100">
-          <div class="w-3/4 bg-green-700 flex justify-end">
-            <h1 class="text-4xl text-white font-serif font-bold p-2">EMERGENCY CONTACTS</h1>
+        <div class="min-h-screen flex flex-col ">
+          <div class="w-3/4 glass-green-dark flex justify-end">
+            <h1 class="text-3xl text-white font-serif font-bold px-6 py-2">EMERGENCY CONTACTS</h1>
           </div>
           <div class="flex flex-col md:flex-row">
-            <p class="bg-green-200 basis-0 grow text-3xl py-4 px-12">Prioritize safety with an easily accessible emergency section. Reach out to designated contacts swiftly through in-app alerts and automated SMS notifications in critical situations.</p>
-            <div class="basis-0 grow"><img src={call} class="" /></div>
+            <p class="glass-green basis-0 grow text-3xl py-4 px-12">Prioritize safety with an easily accessible emergency section. Reach out to designated contacts swiftly through in-app alerts and automated SMS notifications in critical situations.</p>
+            <div class="basis-0 grow m-10"><img src={call} class="max-h-screen ml-auto" width="400" height="400" /></div>
           </div>
         </div>
-        <div class="min-h-screen flex flex-col items-end bg-green-100">
-          <div class="w-3/4 bg-green-700 flex">
-            <h1 class="text-4xl text-white font-serif font-bold p-2">MEDICAL RECORDS</h1>
+        <div class="min-h-screen flex flex-col items-end ">
+          <div class="w-3/4 glass-green-dark flex">
+            <h1 class="text-3xl text-white font-serif font-bold px-6 py-2">MEDICAL RECORDS</h1>
           </div>
           <div class="flex flex-col md:flex-row">
-            <div class="basis-0 grow"><img src={records} class="max-h-screen" /></div>
-            <p class="bg-green-200 basis-0 grow text-3xl py-4 px-12">Upload your medical records, set goals and visualize the progress you make. Share your records and get feedback and recommendations from doctors and experts.</p>
+            <div class="basis-0 grow m-10"><img src={records} class="max-h-screen mx-auto" width="500" height="500"/></div>
+            <p class="glass-green basis-0 grow text-3xl py-4 px-12">Upload your medical records, set goals and visualize the progress you make. Share your records and get feedback and recommendations from doctors and experts.</p>
           </div>
         </div>
-        <div class="min-h-screen flex flex-col bg-green-100">
-          <div class="w-3/4 bg-green-700 flex justify-end">
-            <h1 class="text-4xl text-white font-serif font-bold p-2">AI CHATBOT</h1>
+        <div class="min-h-screen flex flex-col ">
+          <div class="w-3/4 glass-green-dark flex justify-end">
+            <h1 class="text-3xl text-white font-serif font-bold px-6 py-2">AI CHATBOT</h1>
           </div>
           <div class="flex flex-col md:flex-row">
-            <p class="bg-green-200 basis-0 grow text-3xl py-4 px-12">Get instant answers to medication FAQs, dietary queries, and user assistance. Our friendly chatbot, powered by OpenAI, ensures a coversational interface for step-by-step guidance and troubleshooting.</p>
-            <div class="basis-0 grow"><img src={chat} class="max-h-screen" /></div>
+            <p class="glass-green basis-0 grow text-3xl py-4 px-12">Get instant answers to medication FAQs, dietary queries, and user assistance. Our friendly chatbot, powered by OpenAI, ensures a coversational interface for step-by-step guidance and troubleshooting.</p>
+            <div class="basis-0 grow m-10"><img src={chat} class="max-h-screen mx-auto" width="500" height="500"/></div>
           </div>
         </div>
-        <div class="h-screen bg-green-100 flex justify-center items-center">
-          <button class="bg-green-800 text-white text-xl font-bold px-4 py-1" onClick={() => setState(State.Register)}>JOIN NOW</button>
+        <div class="h-screen flex flex-col gap-2 justify-center items-center glass-green">
+          <p class="text-lg italic font-serif">Want to try it out...</p>
+          <button class="bg-mygreen glass-green-dark text-white font-serif text-2xl font-bold px-10 py-6" onClick={() => setState(State.Register)}>JOIN NOW</button>
         </div>
       </>
     )
